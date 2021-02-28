@@ -1,11 +1,6 @@
 BUILD_DIR=/tmp/ct-exporter/artifacts
 VERSION := $(shell cat VERSION)
 LDFLAGS=-ldflags "-w -s -X github.com/Hsn723/ct-exporter/cmd.CurrentVersion=${VERSION}"
-OS ?= linux
-ARCH ?= amd64
-ifeq ($(OS), windows)
-EXT = .exe
-endif
 
 all: build
 
@@ -24,7 +19,7 @@ lint: clean setup
 	pre-commit run --all-files
 
 .PHONY: test
-test: clean
+test: clean build
 	go test -race -v ./...
 
 .PHONY: verify
@@ -34,4 +29,4 @@ verify:
 
 .PHONY: build
 build: clean setup
-	env GOOS=$(OS) GOARCH=$(ARCH) go build $(LDFLAGS) -o $(BUILD_DIR)/ct-exporter-$(OS)-$(ARCH)$(EXT) .
+	env CGO_ENABLED=0 go build $(LDFLAGS) .

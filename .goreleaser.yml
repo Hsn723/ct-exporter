@@ -1,0 +1,75 @@
+project_name: ct-exporter
+before:
+  hooks:
+    - go mod download
+builds:
+  - env:
+      - CGO_ENABLED=0
+    ldflags:
+      - -w -s -X "github.com/Hsn723/ct-exporter/cmd.CurrentVersion={{.Version}}"
+    goos:
+      - linux
+      - windows
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+      - arm
+    goarm:
+      - 6
+      - 7
+dockers:
+  - image_templates:
+    - "hsn723/ct-exporter:{{ .Version }}-amd64"
+    use_buildx: true
+    dockerfile: Dockerfile
+    build_flag_templates:
+      - "--platform=linux/amd64"
+      - "--label=org.opencontainers.image.created={{.Date}}"
+      - "--label=org.opencontainers.image.title={{.ProjectName}}"
+      - "--label=org.opencontainers.image.revision={{.FullCommit}}"
+      - "--label=org.opencontainers.image.version={{.Version}}"
+  - image_templates:
+    - "hsn723/ct-exporter:{{ .Version }}-arm64"
+    use_buildx: true
+    goarch: arm64
+    dockerfile: Dockerfile
+    build_flag_templates:
+      - "--platform=linux/arm64"
+      - "--label=org.opencontainers.image.created={{.Date}}"
+      - "--label=org.opencontainers.image.title={{.ProjectName}}"
+      - "--label=org.opencontainers.image.revision={{.FullCommit}}"
+      - "--label=org.opencontainers.image.version={{.Version}}"
+  - image_templates:
+    - "hsn723/ct-exporter:{{ .Version }}-arm"
+    use_buildx: true
+    goarch: arm
+    goarm: 7
+    dockerfile: Dockerfile
+    build_flag_templates:
+      - "--platform=linux/arm/v7"
+      - "--label=org.opencontainers.image.created={{.Date}}"
+      - "--label=org.opencontainers.image.title={{.ProjectName}}"
+      - "--label=org.opencontainers.image.revision={{.FullCommit}}"
+      - "--label=org.opencontainers.image.version={{.Version}}"
+docker_manifests:
+  - name_template: "hsn723/ct-exporter:{{ .Version }}"
+    image_templates:
+      - "hsn723/ct-exporter:{{ .Version }}-amd64"
+      - "hsn723/ct-exporter:{{ .Version }}-arm64"
+      - "hsn723/ct-exporter:{{ .Version }}-arm"
+  - name_template: "hsn723/ct-exporter:{{ .Major }}.{{ .Minor }}"
+    image_templates:
+      - "hsn723/ct-exporter:{{ .Version }}-amd64"
+      - "hsn723/ct-exporter:{{ .Version }}-arm64"
+      - "hsn723/ct-exporter:{{ .Version }}-arm"
+checksum:
+  name_template: 'checksums.txt'
+snapshot:
+  name_template: "{{ .Tag }}-next"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'

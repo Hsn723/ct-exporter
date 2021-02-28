@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/Hsn723/ct-exporter/api"
+	"github.com/Hsn723/certspotter-client/api"
 	"github.com/Hsn723/ct-exporter/server"
 	"github.com/cybozu-go/log"
 	"github.com/cybozu-go/well"

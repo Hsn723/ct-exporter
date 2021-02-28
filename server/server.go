@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Hsn723/ct-exporter/api"
+	"github.com/Hsn723/certspotter-client/api"
 	"github.com/cybozu-go/log"
 	"github.com/cybozu-go/well"
 	"github.com/gorilla/mux"
@@ -124,7 +124,7 @@ func (s *CTExporter) handleProbe(w http.ResponseWriter, r *http.Request) {
 		})
 	}
 
-	issuances, err := s.Client.GetIssuances(target, pos)
+	issuances, err := s.Client.GetIssuances(target, true, true, pos)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		return
