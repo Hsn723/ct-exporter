@@ -5,8 +5,6 @@ before:
 builds:
   - env:
       - CGO_ENABLED=0
-    ldflags:
-      - -w -s -X "github.com/Hsn723/ct-exporter/cmd.CurrentVersion={{.Version}}"
     goos:
       - linux
       - windows

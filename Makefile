@@ -1,6 +1,6 @@
 BUILD_DIR=/tmp/ct-exporter/artifacts
 VERSION := $(shell cat VERSION)
-LDFLAGS=-ldflags "-w -s -X github.com/Hsn723/ct-exporter/cmd.CurrentVersion=${VERSION}"
+LDFLAGS=-ldflags "-w -s -X main.version=${VERSION}"
 
 all: build
 

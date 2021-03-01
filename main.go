@@ -29,8 +29,10 @@ var (
 	port        uint16
 	positionDir string
 
-	// CurrentVersion stores the current version number.
-	CurrentVersion string
+	version string
+	commit  string
+	date    string
+	builtBy string
 )
 
 func init() {
@@ -40,7 +42,10 @@ func init() {
 
 func runRoot(cmd *cobra.Command, args []string) error {
 	_ = log.Info("starting ct-exporter", map[string]interface{}{
-		"version": CurrentVersion,
+		"version":  version,
+		"commit":   commit,
+		"date":     date,
+		"built_by": builtBy,
 	})
 	if err := os.MkdirAll(positionDir, 0755); err != nil {
 		return err

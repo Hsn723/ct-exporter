@@ -60,7 +60,7 @@ func (s *CTExporter) createLabel(issuance api.Issuance) ([]string, error) {
 func (s *CTExporter) getPosition(filename string) (pos uint64, err error) {
 	content, err := ioutil.ReadFile(filename)
 	if err != nil {
-		return
+		return 0, nil
 	}
 	return strconv.ParseUint(strings.TrimSpace(string(content)), 10, 64)
 }
