@@ -19,6 +19,7 @@ builds:
 dockers:
   - image_templates:
     - "hsn723/ct-exporter:{{ .Version }}-amd64"
+    - "ghcr.io/hsn723/ct-exporter:{{ .Version }}-amd64"
     use_buildx: true
     dockerfile: Dockerfile
     build_flag_templates:
@@ -29,6 +30,7 @@ dockers:
       - "--label=org.opencontainers.image.version={{.Version}}"
   - image_templates:
     - "hsn723/ct-exporter:{{ .Version }}-arm64"
+    - "ghcr.io/hsn723/ct-exporter:{{ .Version }}-arm64"
     use_buildx: true
     goarch: arm64
     dockerfile: Dockerfile
@@ -40,6 +42,7 @@ dockers:
       - "--label=org.opencontainers.image.version={{.Version}}"
   - image_templates:
     - "hsn723/ct-exporter:{{ .Version }}-arm"
+    - "ghcr.io/hsn723/ct-exporter:{{ .Version }}-arm"
     use_buildx: true
     goarch: arm
     goarm: 7
@@ -51,6 +54,11 @@ dockers:
       - "--label=org.opencontainers.image.revision={{.FullCommit}}"
       - "--label=org.opencontainers.image.version={{.Version}}"
 docker_manifests:
+  - name_template: "hsn723/ct-exporter:latest"
+    image_templates:
+      - "hsn723/ct-exporter:{{ .Version }}-amd64"
+      - "hsn723/ct-exporter:{{ .Version }}-arm64"
+      - "hsn723/ct-exporter:{{ .Version }}-arm"
   - name_template: "hsn723/ct-exporter:{{ .Version }}"
     image_templates:
       - "hsn723/ct-exporter:{{ .Version }}-amd64"
@@ -61,6 +69,21 @@ docker_manifests:
       - "hsn723/ct-exporter:{{ .Version }}-amd64"
       - "hsn723/ct-exporter:{{ .Version }}-arm64"
       - "hsn723/ct-exporter:{{ .Version }}-arm"
+  - name_template: "ghcr.io/hsn723/ct-exporter:latest"
+    image_templates:
+      - "ghcr.io/hsn723/ct-exporter:{{ .Version }}-amd64"
+      - "ghcr.io/hsn723/ct-exporter:{{ .Version }}-arm64"
+      - "ghcr.io/hsn723/ct-exporter:{{ .Version }}-arm"
+  - name_template: "ghcr.io/hsn723/ct-exporter:{{ .Version }}"
+    image_templates:
+      - "ghcr.io/hsn723/ct-exporter:{{ .Version }}-amd64"
+      - "ghcr.io/hsn723/ct-exporter:{{ .Version }}-arm64"
+      - "ghcr.io/hsn723/ct-exporter:{{ .Version }}-arm"
+  - name_template: "ghcr.io/hsn723/ct-exporter:{{ .Major }}.{{ .Minor }}"
+    image_templates:
+      - "ghcr.io/hsn723/ct-exporter:{{ .Version }}-amd64"
+      - "ghcr.io/hsn723/ct-exporter:{{ .Version }}-arm64"
+      - "ghcr.io/hsn723/ct-exporter:{{ .Version }}-arm"
 checksum:
   name_template: 'checksums.txt'
 snapshot:
