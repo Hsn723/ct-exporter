@@ -1,4 +1,3 @@
-BUILD_DIR=/tmp/ct-exporter/artifacts
 VERSION := $(shell cat VERSION)
 LDFLAGS=-ldflags "-w -s -X main.version=${VERSION}"
 
@@ -6,14 +5,10 @@ all: build
 
 .PHONY: clean
 clean:
-	rm -rf ${BUILD_DIR}
-
-.PHONY: setup
-setup:
-	mkdir -p ${BUILD_DIR}
+	if [ -f ct-exporter ]; then rm ct-exporter; fi
 
 .PHONY: lint
-lint: clean setup
+lint: clean
 	if [ -z "$(shell which pre-commit)" ]; then pip3 install pre-commit; fi
 	pre-commit install
 	pre-commit run --all-files
@@ -28,5 +23,5 @@ verify:
 	go mod verify
 
 .PHONY: build
-build: clean setup
+build: clean
 	env CGO_ENABLED=0 go build $(LDFLAGS) .
