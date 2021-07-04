@@ -1,4 +1,4 @@
-FROM golang:1.15-buster as build
+FROM golang:1.16-buster as build
 WORKDIR /work
 RUN mkdir -p /etc/ct-exporter /var/log/ct-exporter \
     && chown nobody:nogroup /etc/ct-exporter /var/log/ct-exporter
