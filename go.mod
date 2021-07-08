@@ -8,6 +8,6 @@ require (
 	github.com/cybozu-go/well v1.10.0
 	github.com/gorilla/mux v1.8.0
 	github.com/gruntwork-io/terratest v0.36.4
-	github.com/prometheus/client_golang v1.0.0
+	github.com/prometheus/client_golang v1.11.0
 	github.com/spf13/cobra v1.2.1
 )
