@@ -1,0 +1,41 @@
+schemaVersion: "2.0.0"
+fileExistenceTests:
+  - name: "ct-exporter"
+    path: "/ct-exporter"
+    shouldExist: true
+    permissions: "-rwxr-xr-x"
+  - name: "passwd"
+    path: "/etc/passwd"
+    shouldExist: true
+    permissions: "-rw-r--r--"
+    uid: 0
+    gid: 0
+  - name: "group"
+    path: "/etc/group"
+    shouldExist: true
+    permissions: "-rw-r--r--"
+    uid: 0
+    gid: 0
+  - name: "/etc/ct-exporter"
+    path: "/etc/ct-exporter"
+    shouldExist: true
+    permissions: "drwxr-xr-x"
+    uid: 65534
+    gid: 65534
+  - name: "/var/log/ct-exporter"
+    path: "/var/log/ct-exporter"
+    shouldExist: true
+    permissions: "drwxr-xr-x"
+    uid: 65534
+    gid: 65534
+metadataTest:
+  entrypoint: ["/ct-exporter"]
+  labels:
+    - key: "org.opencontainers.image.authors"
+      value: "Hsn723"
+    - key: "org.opencontainers.image.title"
+      value: "ct-exporter"
+    - key: "org.opencontainers.image.source"
+      value: "https://github.com/hsn723/ct-exporter"
+licenseTests:
+  - files: ["/LICENSE"]
