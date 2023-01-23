@@ -83,8 +83,8 @@ github.com/BurntSushi/toml v1.2.0 h1:Rt8g24XnyGTyglgET/PRUNlrUeu9F5L+7FilkXfZgs0
 github.com/BurntSushi/toml v1.2.0/go.mod h1:CxXYINrC8qIiEnFrOxCa7Jy5BFHlXnUU2pbicEuybxQ=
 github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802/go.mod h1:IVnqGOEym/WlBOVXweHU+Q+/VP0lqqI8lqeDx9IjBqo=
 github.com/DataDog/datadog-go v3.2.0+incompatible/go.mod h1:LButxg5PwREeZtORoXG3tL4fMGNddJ+vMq1mwgfaqoQ=
-github.com/Hsn723/certspotter-client v1.0.2 h1:zuu5kvidFt6lYlq2K2l5RtqubDt8RKrmjuBAydR1EwY=
-github.com/Hsn723/certspotter-client v1.0.2/go.mod h1:8RtD1eJdU2jvRZaYUwOExT7dM5kh72zPHV/3Z3dHVvc=
+github.com/Hsn723/certspotter-client v1.1.0 h1:E/oXNC8+/m3V4FlhG7d1AJR9wyUcKwMR/jqHdbC8kCQ=
+github.com/Hsn723/certspotter-client v1.1.0/go.mod h1:8RtD1eJdU2jvRZaYUwOExT7dM5kh72zPHV/3Z3dHVvc=
 github.com/Microsoft/go-winio v0.4.11/go.mod h1:VhR8bwka0BXejwEJY73c50VrPtXAaKcyvVC4A4RozmA=
 github.com/Microsoft/go-winio v0.4.14/go.mod h1:qXqCSQ3Xa7+6tgxaGTIe4Kpcdsi+P8jBhyzoq1bpyYA=
 github.com/Microsoft/go-winio v0.4.15-0.20190919025122-fc70bd9a86b5/go.mod h1:tTuCMEN+UleMWgg9dVx4Hu52b1bJo+59jBh3ajtinzw=
